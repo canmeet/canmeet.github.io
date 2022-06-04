@@ -1,6 +1,8 @@
+document.getElementById("btn_login_page").addEventListener("click", fnSend);
+
 function fnSend(){
     let requestBody = { "email": $("#email").val(), "password": $("#password").val() };
-    $.ajax('https://app.swaggerhub.com/apis-docs/CanMeet/CanMeet-API/1.0.0#', {
+    $.ajax('https://canmeet.herokuapp.com/v1/user/login', {
         type: 'POST',  // http method
         dataType: "json",
         data: JSON.stringify({ email: $("#email").val(), "password": $("#password").val() }),  // data to submit
@@ -9,6 +11,7 @@ function fnSend(){
         },
 
         success: function (data, status, xhr) {
+            document.cookie = `Authorization=Bearer ${data.token}`;
             $('#myid').html('登入成功 Status Code: ' + xhr.status + ', data: ' + JSON.stringify(data));
         },
         error: function (e) {
