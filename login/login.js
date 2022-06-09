@@ -12,10 +12,10 @@ function fnSend(){
 
         success: function (data, status, xhr) {
             document.cookie = `Authorization=Bearer ${data.token}`;
-            $('#myid').html('登入成功 Status Code: ' + xhr.status + ', data: ' + JSON.stringify(data));
+            $('#myid').html('<p style="font-size=15px; color:red;">登入成功 Status Code: ' + xhr.status + ', data: </p>' + JSON.stringify(data));
         },
         error: function (e) {
-            $('#myid').html('登入失敗, Status Code: '+e.status+ ', data: ' + JSON.stringify(e.responseJSON));
+            $('#myid').html('<p style="font-size=15px; color:red;">登入失敗, Status Code: '+e.status+ ', data: </p>' + JSON.stringify(e.responseJSON));
         }
     });
 }
