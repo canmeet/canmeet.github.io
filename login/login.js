@@ -12,12 +12,10 @@ function fnSend(){
 
         success: function (data, status, xhr) {
             document.cookie = `Authorization=Bearer ${data.token}`;
-            //$('#myid').html("<p style="font-size=10px; color:red;">登入成功 Status Code: " + xhr.status + ", data: " + JSON.stringify(data)+"</p>");
-            $('#myid').html("<p style="font-size=10px; color:red;">登入成功</p>");
+            $('#myid').html('登入成功 Status Code: ' + xhr.status + ', data: ' + JSON.stringify(data));
         },
         error: function (e) {
-            //$('#myid').html("<p style="font-size=10px; color:red;">登入失敗, Status Code: "+e.status+ ", data: "+ JSON.stringify(e.responseJSON)+"</p>");
-            $('#myid').html("<p style="font-size=10px; color:red;">登入失敗,請重新檢查帳號密碼</p>");
+            $('#myid').html('登入失敗, Status Code: '+e.status+ ', data: ' + JSON.stringify(e.responseJSON));
         }
     });
 }
