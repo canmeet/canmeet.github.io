@@ -49,7 +49,7 @@ function setData() {
 
   let test_token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzekBhYmMuY29tIiwiZW1haWwiOiJzekBhYmMuY29tIiwiaWF0IjoxNjU1MzEwMjc4fQ.l8indQpXTCeSSpT4YyVtuymUpmSjcNdouR_GBLPXFbM";
 
-
+  let Authorization = getCookie("Authorization");
   console.log("page onload!");
   console.log("token" + getCookie("Authorization"));
 
@@ -61,14 +61,14 @@ function setData() {
             headers: {
                 "Content-Type": "application/json",
                 //"Authorization": res.value
-                "Authorization": test_token
+                "Authorization": Authorization
             },
 
             success: function (data, status, xhr) {
                 console.log("successfully get user info!");  
-
-
-
+                $('#UserPhoto').attr('src', data.photo);
+                $('#myPhoto').attr('src', data.photoUrl);
+                $('#myPhoto').attr('src', data.photoUrl);
                 $('#myPhoto').attr('src', data.photoUrl);
             },
             error: function (e) {
