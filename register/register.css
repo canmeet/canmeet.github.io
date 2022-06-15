@@ -53,3 +53,7 @@ button#btn_submit{
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     border-radius: 2px;
 }
+button#btn_submit:hover{
+    opacity: 0.7;
+}
+

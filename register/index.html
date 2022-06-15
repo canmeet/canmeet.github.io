@@ -22,6 +22,15 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 
+    <!-- Load jquery -->
+    <script src="/lib/jquery-3.6.0.min.js"></script>
+
+    <!-- Load jquery-confirm -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    
+
+
 </head>
 
 <body>
@@ -50,8 +59,9 @@
                     
                     <!-- 頭像 -->
                     <center>
-                        <input type="file" id="upload_UserPhoto" accept="image/*" @change="handleFile" class="hiddenInput" style="display: none;"/>
-                        <img id="UserPhoto" class="round_photo" :src="https://canmeet-img-proxy.slink.ren/7480cb87-ea88-4d66-880a-6cbaa9a404b37862599335259941820.jpg" onclick="upload_UserPhoto.click()"> 
+                        <input type="file" id="upload_UserPhoto" accept="image/*" class="hiddenInput" style="display: none;" onchange="postData()">
+                        <img id="UserPhoto" class="round_photo" src="/avatar_resources/user.png" onclick="upload_UserPhoto.click()"> 
+
                     </center>
                     
                     <h1 style="color: #667080; text-align: center; font-size: 20px; margin-top: 30px;"><b>帳號資料</b></h1>
@@ -87,7 +97,8 @@
                     </div>
                     <div class="mb-1">
                         <label for="hometown" class="form-label">家鄉</label>
-                        <select class="form-select form-select-sm" aria-label="hometown">
+                        <select class="form-select form-select-sm" aria-label="hometown" id="hometown">
+
                             <option selected>請選擇</option>
                             <option value="TPE">台北</option>
                             <option value="NTPC">新北</option>
@@ -98,14 +109,26 @@
                         </select>
                     </div>
                     <div class="mb-1">
-                        <label for="interest" class="form-label">興趣</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-sm" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="button" id="delete_interest">x</button>
+                        <label for="interest" class="form-label">興趣</label>   
+                        <input type="text" class="form-control form-control-sm" id="interest">
+                        
+                        <!-- 興趣填寫欄位 
+                        <div id="interestGroup">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control form-control-sm" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <button class="btn btn-outline-secondary delete_interest" type="button">x</button>
+                            </div>
                         </div>
+                        -->
+                        <!-- 新增興趣欄位 
                         <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-outline-secondary">+</button>
+                            <button type="button" class="btn btn-outline-secondary" id="btn_addInterest">+</button>
                         </div>
+                        -->
+                    </div>
+                    <div class="mb-1">
+                        <label for="school" class="form-label">學校</label>
+                        <input type="text" class="form-control form-control-sm" id="school">
                     </div>
                     <div class="mb-1">
                         <label for="department" class="form-label">科系</label>
