@@ -43,6 +43,16 @@ function setData() {
 
   let test_token = "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzekBhYmMuY29tIiwiZW1haWwiOiJzekBhYmMuY29tIiwiaWF0IjoxNjU1MzEwMjc4fQ.l8indQpXTCeSSpT4YyVtuymUpmSjcNdouR_GBLPXFbM";
 
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  console.log(getCookie("Authorization"));
+
+
   $.ajax('https://canmeet.herokuapp.com/v1/user/info/details', {
             type: 'GET',  // http method
             // dataType: "json",
