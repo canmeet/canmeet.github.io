@@ -22,6 +22,9 @@ async function getCurrentTab() {
   return tab;
 }
 
+
+
+
 //Example starter JavaScript for disabling form submissions if there are invalid fields
 (() => {
   'use strict'
@@ -73,6 +76,10 @@ function register() {
   console.log($("#hometown").val());
   console.log(avatarURL);
 
+  let interest_array = ($("#interest").val()).split(" ");
+  console.log(interest_array);
+
+
   // 進行註冊
   $.ajax('https://canmeet.herokuapp.com/v1/user/register', {
         type: 'POST',  // http method
@@ -86,7 +93,7 @@ function register() {
           "grade": $("#grade").val(),
           "birthday": $("#birthday").val(),
           "hometown": $("#hometown").val(),
-          "interests": "['游泳', '耍廢']",
+          "interests": interest_array,
           "photoUrl": $("#UserPhoto").attr('src')
         }),  // data to submit
         headers: {
