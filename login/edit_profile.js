@@ -59,17 +59,23 @@ function setData() {
             // dataType: "json",
             // data: JSON.stringify({  }),
             headers: {
-                "Content-Type": "application/json",
+                //"Content-Type": "application/json",
                 //"Authorization": res.value
                 "Authorization": Authorization
             },
 
             success: function (data, status, xhr) {
                 console.log("successfully get user info!");  
-                $('#UserPhoto').attr('src', data.photo);
-                $('#myPhoto').attr('src', data.photoUrl);
-                $('#myPhoto').attr('src', data.photoUrl);
-                $('#myPhoto').attr('src', data.photoUrl);
+                $('#UserPhoto').attr('src', data.info.photo);
+                $('#email').attr('value', data.info.email);
+                $('#password').attr('value', data.info.password);
+                $('#checkpassword').attr('value', data.info.password);
+                $('#name').attr('value', data.info.name);
+                $('#birthday').attr('value', data.info.school);
+                $('#hometown').attr('value', data.info.hometown);
+                $('#interest').attr('value', data.info.interests);
+                $('#department').attr('value', data.info.department);
+                $('#grade').attr('value', data.info.grade);
             },
             error: function (e) {
                 // $('#myid').html('登入失敗, Status Code: ' + e.status + ', data: ' + JSON.stringify(e.responseJSON));
