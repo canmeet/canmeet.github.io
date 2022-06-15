@@ -46,11 +46,11 @@ var avatarURL = "";
 fileUploader.addEventListener('change', (e) => {
   console.log(e.target.files[0]); // get file object
 
+  postData();
+  // avatarURL = URL.createObjectURL(e.target.files[0]);
+  // console.log(avatarURL);
 
-  avatarURL = URL.createObjectURL(e.target.files[0]);
-  console.log(avatarURL);
-
-  $('#UserPhoto').attr('src', avatarURL);
+  // $('#UserPhoto').attr('src', avatarURL);
 
 });
 
@@ -82,7 +82,7 @@ function register() {
           "birthday": $("#birthday").val(),
           "hometown": $("#hometown").val(),
           "interests": "['游泳', '耍廢']",
-          "photoUrl": avatarURL
+          "photoUrl": $("#UserPhoto").attr('src')
         }),  // data to submit
         headers: {
             "Content-Type": "application/json"
@@ -119,3 +119,24 @@ function register() {
 $("#btn_submit").click(function(event){
   event.preventDefault();
 })
+
+
+function postData() {
+  var formData = new FormData();
+  formData.append("file", $("#upload_UserPhoto")[0].files[0]);
+  $.ajax({
+      url: 'https://canmeet.herokuapp.com/v1/image/upload',
+      type: "post",
+      data: formData,
+      processData: false, 
+      contentType: false, 
+      dataType: 'text',
+      success: function(data) {
+          var params = JSON.parse(data)
+          $("#UserPhoto").attr("src", params.url);
+      },
+      error: function(data) {
+          
+      }
+  });
+}
