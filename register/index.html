@@ -109,12 +109,16 @@
                     </div>
                     <div class="mb-1">
                         <label for="interest" class="form-label">興趣</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-sm" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="button" id="delete_interest">x</button>
+                        <!-- 興趣填寫欄位 -->
+                        <div id="interestGroup">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control form-control-sm" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <button class="btn btn-outline-secondary delete_interest" type="button">x</button>
+                            </div>
                         </div>
+                        <!-- 新增興趣欄位 -->
                         <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-outline-secondary">+</button>
+                            <button type="button" class="btn btn-outline-secondary" id="btn_addInterest">+</button>
                         </div>
                     </div>
                     <div class="mb-1">

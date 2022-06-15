@@ -2,6 +2,12 @@
 //設定點擊事件
 $("#btn_login_page").on("click", loginClicked);
 $("#btn_submit").on("click", register);
+$("#btn_addInterest").on("click", addInterestInput);
+//$(".delete_interest").on("click", deleteInterestInput);
+
+//設定全域變數
+var countInterest = 1;  // default = 1
+
 
 
 // loginClicked: 跳往登入畫面
@@ -40,7 +46,7 @@ async function getCurrentTab() {
 
 
 
-// 取得上傳檔案的基本資訊，當選擇檔案時就會觸發
+// 取得上傳檔案的基本資訊，當選擇檔案時就會觸發頭像預覽
 const fileUploader = document.querySelector("#upload_UserPhoto");
 var avatarURL = "";
 fileUploader.addEventListener('change', (e) => {
@@ -56,7 +62,6 @@ fileUploader.addEventListener('change', (e) => {
 
 
 
-
 // register: 上傳資料
 function register() {
 
@@ -68,7 +73,7 @@ function register() {
   console.log($("#hometown").val());
   console.log(avatarURL);
 
-  // 開始註冊
+  // 進行註冊
   $.ajax('https://canmeet.herokuapp.com/v1/user/register', {
         type: 'POST',  // http method
         dataType: "json",
@@ -115,10 +120,11 @@ function register() {
 }
 
 
-// 防止網頁跳轉
-$("#btn_submit").click(function(event){
-  event.preventDefault();
-})
+//防止網頁跳轉
+// $("#btn_submit").click(function(event){
+//   event.preventDefault();
+//   //return false;
+// })
 
 
 function postData() {
@@ -140,3 +146,32 @@ function postData() {
       }
   });
 }
+
+
+
+// addInterestInput: 點擊後新增興趣欄位
+function addInterestInput() {
+
+  countInterest++;
+  var interest_object=`<div class="input-group mb-3" id="interest${countInterest}">
+  <input type="text" class="form-control form-control-sm" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button class="btn btn-outline-secondary delete_interest" type="button" id="${countInterest}">x</button></div>`;
+  $("div#interestGroup").append(interest_object);
+
+  console.log(countInterest);
+}
+
+//deleteInterestInput: 點擊後刪除興趣欄位
+function deleteInterestInput() {
+  console.log("clicked delete!");
+  console.log($(this).attr("id"));
+  $(div).parent("#interst").remove();
+}
+
+
+$('.delete_interest').click(function (e) { 
+        let getdivID = $(this).attr("id");
+
+        console.log(getdivID);
+  
+ });
